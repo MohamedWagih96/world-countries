@@ -1,0 +1,52 @@
+.body-component-style {
+    background-color: whitesmoke;
+    height: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.body-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box {
+    margin: 25px 0px 25px 50px;
+}
+
+.filter-box {
+    margin: 25px 50px 25px 0px;
+}
+
+.countries-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+.card {
+    width:300px;
+    height: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+    margin-bottom: 70px;
+    cursor: pointer;
+}
+
+.card-info {
+    padding-left: 20px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.flag-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
