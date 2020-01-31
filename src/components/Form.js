@@ -1,4 +1,8 @@
 import React from 'react';
+import Select from 'antd/es/select'; // for js
+import 'antd/es/select/style/index.css'; // for css
+
+const { Option } = Select;
 
 function Form(props) {
     return(
@@ -10,12 +14,10 @@ function Form(props) {
                 placeholder = "Search for a country..." 
             />
 
-            <select className = "filter-box">
-                <option enabled = "false">Filter by Region</option>
-                <option value = "opt1">opt1</option>
-                <option value = "opt2">opt2</option>
-                <option value = "opt3">opt3</option>
-            </select>
+        <Select className = "filter-box" defaultValue="Filter by Region" style={{ width: 165 }}>
+            <Option value="jack">Jack</Option>
+            <Option value="lucy">Lucy</Option>
+        </Select>
         </form>
     );
 }
