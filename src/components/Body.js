@@ -8,10 +8,12 @@ class Body extends React.Component {
         super();
         this.state = {
             countriesData: [],
-            displayedCountries: []
+            displayedCountries: [],
+            savedCountriesData: []
         }
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleSearchChange = this.handleSearchChange.bind(this);
+        this.handleFilterChange = this.handleFilterChange.bind(this);
     }
 
     componentDidMount() {
@@ -20,25 +22,52 @@ class Body extends React.Component {
         .then(data => {
             this.setState({
                 countriesData: data,
-                displayedCountries: data
+                displayedCountries: data,
+                savedCountriesData: data
             });
         })
         .catch(error => console.log("ERROR: Data retrieving failed!"))
     }
+    
+    findCountry(text) {
+        //let displayedCountries = this.state.displayedCountries;
+        let savedCountriesData = this.state.savedCountriesData;
+
+        if(text === "") {
+            return savedCountriesData;
+        }
+        else {
+            return savedCountriesData.filter(country => {
+                return country.name.startsWith(text);
+            });
+        }
+    }
 
     filterByRegion(region) {
         let allCountries = this.state.countriesData;
-        let filteredCountries = allCountries.filter(country => {
+        return allCountries.filter(country => {
             return country.region === region;
         });
-
-        return filteredCountries;
     }
 
-    handleChange(value) {
-        let filteredCountries = this.filterByRegion(value);
+    handleSubmit(event) {
+        event.preventDefault();
+    }
+
+    handleSearchChange(event) {
+        const {value} = event.target;
+        let data = this.findCountry(value);
+
         this.setState({
-            displayedCountries: filteredCountries
+            displayedCountries: data
+        });
+    }
+
+    handleFilterChange(value) {
+        let data = this.filterByRegion(value);
+        this.setState({
+            displayedCountries: data,
+            savedCountriesData: data
         });
     }
 
@@ -46,7 +75,9 @@ class Body extends React.Component {
         return(
             <div className = "body-component-style">
                 <Form 
-                    handleChange = {this.handleChange}
+                    handleSubmit = {this.handleSubmit}
+                    handleSearchChange = {this.handleSearchChange}
+                    handleFilterChange = {this.handleFilterChange}
                 />
 
                 <Countries 
