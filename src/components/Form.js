@@ -19,7 +19,7 @@ function Form(props) {
             <Select 
                 className = "filter-box" 
                 defaultValue="Filter by Region"  
-                dropdownMatchSelectWidth = {false} 
+                style= {{width: 165}}
                 size = {"large"}
                 onChange = {props.handleFilterChange}
             >
