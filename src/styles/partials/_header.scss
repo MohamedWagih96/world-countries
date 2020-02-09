@@ -1,8 +1,5 @@
 .header-component-style {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(nowrap, space-between);
     height: 10%;
     margin-bottom: 3px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -10,13 +7,11 @@
 
 .header-title {
     margin-left: 50px;
+    font-family: $nunito-sans;
 }
 
 .theme-mode {
     margin-right: 50px;
     color: black;
-    
+    font-family: $nunito-sans;
 }
-
-
-

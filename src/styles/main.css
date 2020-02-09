@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+.header-component-style {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10%;
+  margin-bottom: 3px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.header-title {
+  margin-left: 50px;
+}
+
+.theme-mode {
+  margin-right: 50px;
+  color: black;
+}
+
+.body-component-style {
+  background-color: #fafafa;
+  height: 90%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.body-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.countries-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-box {
+  /*top right bottom left */
+  margin: 35px 0px 0px 50px;
+  /* Search box border */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 350px;
+  height: 40px;
+  -webkit-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
+  /* Search box icon */
+  background-color: white;
+  background-image: url("https://www.w3schools.com/howto/searchicon.png");
+  background-position: 20px 10px;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  /* Search box text */
+  font-size: 16px;
+  padding: 12px 20px 12px 50px;
+}
+
+.search-box:focus {
+  width: 30%;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-top: 35px;
+  margin-bottom: 70px;
+  cursor: pointer;
+}
+
+.card-info {
+  padding-left: 20px;
+}
+
+.card-flag-image {
+  width: 300px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+html, body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+/*# sourceMappingURL=main.css.map */

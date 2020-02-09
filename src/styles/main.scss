@@ -1,0 +1,13 @@
+// Modules:
+@import "./modules/mixins",
+        "./modules/colors",
+        "./modules/fonts";
+
+// Partials:
+@import "./partials/header",
+        "./partials/body",
+        "./partials/search-box", 
+        "./partials/filter-box",
+        "./partials/card";
+
+

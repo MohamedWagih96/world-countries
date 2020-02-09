@@ -1,8 +1,0 @@
-html, body {
-    height: 100%;
-}
-
-.app-style {
-    display: flex;
-    flex-direction: column;
-}

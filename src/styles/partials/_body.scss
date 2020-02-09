@@ -1,0 +1,13 @@
+.body-component-style {
+    background-color: $light-mode-background;
+    height: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.body-header {
+    @include flex(wrap, space-between);
+}
+
+.countries-layout {
+    @include flex(wrap, space-evenly);
+}

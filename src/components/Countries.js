@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function Countries(props) {
     return(
         <div className = "countries-layout">
@@ -9,7 +8,7 @@ function Countries(props) {
                     return(
                     <div className = "card" key = {country.numericCode}>
                         <img 
-                            className = "flag-image"
+                            className = "card-flag-image"
                             src = {country.flag} 
                             alt = "Country's Flag"
                         />

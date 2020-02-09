@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from './Form';
 import Countries from './Countries';
-import './Body.css';
 
 class Body extends React.Component {
     constructor() {
