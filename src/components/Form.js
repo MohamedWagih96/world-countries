@@ -19,7 +19,7 @@ function Form(props) {
             <Select 
                 className = "filter-box" 
                 defaultValue="Filter by Region"  
-                style= {{width: 205}}
+                style= {{width: 205, margin: "25px 50px 0px 50px", fontFamily: "$nunito-sans"}}
                 size = {"large"}
                 onChange = {props.handleFilterChange}
             >
