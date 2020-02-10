@@ -14,4 +14,18 @@ $light-mode-input: hsl(0, 0%, 52%);
 $light-mode-background: hsl(0, 0%, 98%);
 
 //White (Dark Mode Text & Light Mode Elements)
-$dark-mode-text--light-mode-elements: hsl(0, 0%, 100%);
+$dark-mode-text: hsl(0, 0%, 100%);
+$light-mode-elements: hsl(0, 0%, 100%);
+
+
+:export {
+    darkModeElements: $dark-mode-elements;
+    darkModeBackground: $dark-mode-background;
+    darkModeText: $dark-mode-text;
+
+    lightModeElements: $light-mode-elements;
+    lightModeBackground: $light-mode-background;
+    lightModeText: $light-mode-text;
+    lightModeInput: $light-mode-input;
+    
+}

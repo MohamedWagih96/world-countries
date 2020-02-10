@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './Form';
 import Countries from './Countries';
+import colors from "../styles/modules/_colors.scss";
 
 class Body extends React.Component {
     constructor() {
@@ -72,7 +73,7 @@ class Body extends React.Component {
 
     render() {
         return(
-            <div className = "body-component-style">
+            <div className = "body-component-style" id = "wc-body">
                 <Form 
                     handleSubmit = {this.handleSubmit}
                     handleSearchChange = {this.handleSearchChange}
