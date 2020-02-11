@@ -10,7 +10,7 @@
     border: 1px none #ccc;
     box-shadow: 0 0 2px rgba(0,0,0,0.2);
     border-radius: 4px;
-    width: 350px;
+    width: 250px;
     height: 40px;
     transition: width 0.5s ease-in-out;
 
@@ -26,7 +26,6 @@
     padding: 12px 20px 12px 50px;
 
     &:focus {
-        width: 30%;
         outline: none;
     }
 }
