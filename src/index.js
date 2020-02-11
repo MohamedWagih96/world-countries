@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import WorldCountriesPage from './WorldCountriesPage';
 import './styles/main.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<WorldCountriesPage />, document.getElementById('root'));

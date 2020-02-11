@@ -1,0 +1,22 @@
+.theme-button {
+    margin-right: 50px;
+
+    color: black;
+    font-family: $nunito-sans;
+
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+    	outline: none;
+    }
+}
+
+#regular-moon {
+	display: inline;
+}
+
+#solid-sun {
+	display: none;
+}

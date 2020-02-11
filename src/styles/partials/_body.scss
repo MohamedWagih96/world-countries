@@ -11,3 +11,7 @@
 .countries-layout {
     @include flex(wrap, space-evenly);
 }
+
+body {
+	margin: 0;
+}

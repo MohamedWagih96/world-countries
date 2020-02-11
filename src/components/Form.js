@@ -1,8 +1,4 @@
 import React from 'react';
-import Select from 'antd/es/select';
-import "./filter.css";
-
-const {Option} = Select;
 
 function Form(props) {
     return(
@@ -13,10 +9,15 @@ function Form(props) {
                 type = "text" 
                 name = "searchBox" 
                 placeholder = "Search for a country..."
-                onChange = {props.handleSearchChange}
+                onChange = {props.handleChange}
             />
 
-            <select className = "dropdown-box" id = "wc-dropdown-box">
+            <select 
+                id = "wc-dropdown-box" 
+                className = "dropdown-box" 
+                name = "dropdownBox"
+                onChange = {props.handleChange}
+            >
                 <option value = "Africa">Africa</option>
                 <option value = "Americas">Americas</option>
                 <option value = "Asia">Asia</option>

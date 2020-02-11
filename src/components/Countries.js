@@ -1,12 +1,17 @@
 import React from 'react';
 
 function Countries(props) {
+    const styles = {
+        background: props.data.theme.elementsColor,
+        color: props.data.theme.textColor
+    }
+    
     return(
         <div className = "countries-layout">
             {
-                props.data.map(country => {
+                props.data.displayedCountries.map(country => {
                     return(
-                    <div className = "card" key = {country.numericCode}>
+                    <div className = "card" key = {country.numericCode} style = {styles}>
                         <img 
                             className = "card-flag-image"
                             src = {country.flag} 
