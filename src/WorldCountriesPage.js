@@ -62,7 +62,10 @@ class WorldCountriesPage extends React.Component {
         const {name, value} = event.target;
 
         if(name === "searchBox") {
-            let data = this.findCountry(value);
+            let text = value;
+            let countryName = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+
+            let data = this.findCountry(countryName);
             this.setState({
                 displayedCountries: data
             });
