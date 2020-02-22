@@ -1,3 +1,11 @@
+body {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
 .body-component-style {
     background-color: $light-mode-background;
     height: 90%;
@@ -5,13 +13,9 @@
 }
 
 .body-header {
-    @include flex(wrap, space-between);
+    @include flex(row, wrap, space-between);
 }
 
 .countries-layout {
-    @include flex(wrap, space-evenly);
-}
-
-body {
-	margin: 0;
+    @include flex(row, wrap, space-evenly);
 }

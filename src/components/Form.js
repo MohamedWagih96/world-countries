@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Form(props) {
+    
     return(
         <form className = "body-header" onSubmit = {props.handleSubmit}> 
             <input 
@@ -10,6 +11,7 @@ function Form(props) {
                 name = "searchBox" 
                 placeholder = "Search for a country..."
                 onChange = {props.handleChange}
+                
             />
 
             <select 

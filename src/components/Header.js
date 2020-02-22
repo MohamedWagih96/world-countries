@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Header(props) {
-
     return(
         <div className = "header-component-style" id = "wc-header">
             <h3 className = "header-title">Where in the world?</h3>

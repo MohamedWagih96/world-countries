@@ -1,17 +1,6 @@
 .theme-button {
+    @include linkButton(white);
     margin-right: 50px;
-
-    color: black;
-    font-size: 1em;
-    font-family: $nunito-sans;
-
-    background-color: white;
-    border: none;
-    cursor: pointer;
-
-    &:focus {
-    	outline: none;
-    }
 }
 
 #regular-moon {

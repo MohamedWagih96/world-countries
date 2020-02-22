@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import {Link} from "react-router-dom";
 
 function Countries(props) {
     const styles = {
@@ -11,21 +12,23 @@ function Countries(props) {
             {
                 props.data.displayedCountries.map(country => {
                     return(
-                    <div className = "card" key = {country.numericCode} style = {styles}>
-                        <img 
-                            className = "card-flag-image"
-                            src = {country.flag} 
-                            alt = "Country's Flag"
-                        />
+                        <div className = "card" key = {country.numericCode} style = {styles}>
+                            <Link to = {`/${country.name}`} style = {{textDecoration: "none"}}>
+                                <img 
+                                    className = "card-flag-image"
+                                    src = {country.flag} 
+                                    alt = "Country's Flag"
+                                />
 
-                        <div className = "card-info">
-                            <h3><b>{country.name}</b></h3>
+                                <div className = "card-info">
+                                    <h3><b>{country.name}</b></h3>
 
-                            <p><b>Population:</b> {country.population}</p>
-                            <p><b>Region:</b> {country.region}</p>
-                            <p><b>Capital:</b> {country.capital}</p>
+                                    <p><b>Population:</b> {country.population}</p>
+                                    <p><b>Region:</b> {country.region}</p>
+                                    <p><b>Capital:</b> {country.capital}</p>
+                                </div>
+                            </Link>
                         </div>
-                    </div>
                     );
                 })
             }

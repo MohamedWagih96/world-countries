@@ -1,6 +1,8 @@
-import React from 'react';
-import Header from './components/Header';
-import Body from './components/Body';
+import React, {Fragment} from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import CountryDetails from "./components/CountryDetails";
 import colors from "./styles/modules/_colors.scss";
 
 class WorldCountriesPage extends React.Component {
@@ -141,16 +143,35 @@ class WorldCountriesPage extends React.Component {
 
     render() {
         return(
-            <div>
-                <Header
-                    handleClick = {this.handleClick}
-                />
-                <Body
-                    handleSubmit = {this.handleSubmit}
-                    handleChange = {this.handleChange}
-                    data = {this.state}
-                />
-            </div>
+            <Router>
+                <Switch>
+                    <Fragment>
+                        <Header
+                            handleClick = {this.handleClick}
+                        />
+                        <Route 
+                            exact path = "/" 
+                            render = {
+                                (props) => <Body 
+                                                {...props} 
+                                                data = {this.state}
+                                                handleSubmit = {this.handleSubmit} 
+                                                handleChange = {this.handleChange}
+                                            />
+                                    } 
+                        />
+                        <Route 
+                            path = "/:countryName" 
+                            render = {
+                                (props) => <CountryDetails 
+                                                {...props}
+                                                data = {this.state.countriesData}
+                                            />
+                                    }
+                        />
+                    </Fragment>
+                </Switch>
+            </Router>
             );
       }
 }

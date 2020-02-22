@@ -1,7 +1,21 @@
-@mixin flex($flex-wrap, $justify-content) {
+@mixin flex($flex-direction, $flex-wrap, $justify-content) {
     display: flex;
-    flex-direction: row;
+    flex-direction: $flex-direction;
     flex-wrap: $flex-wrap;
     justify-content: $justify-content;
     align-items: center;
+}
+
+@mixin linkButton($color) {
+    color: black;
+    font-size: 1em;
+    font-family: $nunito-sans;
+
+    background-color: $color;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+    	outline: none;
+    } 
 }

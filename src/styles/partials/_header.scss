@@ -1,6 +1,6 @@
 .header-component-style {
-    @include flex(nowrap, space-between);
-    height: 10%;
+    @include flex(row, nowrap, space-between);
+    height: 9vh;
     //margin-bottom: 3px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
