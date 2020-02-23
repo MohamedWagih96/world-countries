@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function getCountry(countries, name = "", code = "") {
 	let data;
@@ -9,11 +10,9 @@ function getCountry(countries, name = "", code = "") {
 	//Return only the country's name using it's Alpha3Code
 	else if(name === "" && code !== "") {
 		data = countries.map(country => {
-			let countryName = country.name;
-			let char = countryName.indexOf("(");
-			if(country.alpha3Code === code) 
-				return countryName.substring(0, char !== -1 ? char : countryName.length);
-		});
+			if(country.alpha3Code === code) return country.name;
+		})
+		.filter(country => country !== undefined); //Remove the empty items
 	}
 
 	return data;
@@ -30,30 +29,49 @@ function CountryDetails(props) {
 			</div>
 			
 			<div className = "country-details-text">
+				<div className = "country-details-text-title"><p><b>{country.name}</b></p></div>
 				<div className = "country-details-text-column">
 					<div className = "country-details-text-column-left">
-						<h1>{country.name}</h1>
 						<p><b>Native Name: </b>{country.nativeName}</p>
 						<p><b>Population: </b>{country.population}</p>
 						<p><b>Region: </b>{country.region}</p>
 						<p><b>Sub Region: </b>{country.subregion}</p>
 						<p><b>Capital: </b>{country.capital}</p>
 					</div>
-
 					<div className = "country-details-text-column-right">
 						<p><b>Top Level Domain: </b>{country.topLevelDomain}</p>
-						<p><b>Currencies: </b>{country.currencies.map(currency => <>{currency.name} </>)}</p>
-						<p><b>Languages: </b>{country.languages.map(language => <>{language.name} </>)}</p>
+
+						<p><b>Currencies: </b>{country.currencies.map(currency => {
+							return(
+								<React.Fragment key = {country.numericCode + currency.name}>
+									{currency.name} </React.Fragment>
+							);
+						})}</p>
+
+						<p><b>Languages: </b>{country.languages.map(language => {
+							return(
+								<React.Fragment key = {country.numericCode + language.name}>
+									{language.name} </React.Fragment>
+							);
+						})}</p>
 					</div>
+					
 				</div>
 
 				<div className = "country-details-text-borders-row">
-					<label style = {{marginRight: "10px"}}><b>Border Countries: </b></label>
+					<label style = {country.borders.length === 0 ? {visibility: "hidden"} : {visibility: "visible"}}>
+						<b>Border Countries: </b>
+					</label>
+
 					{country.borders.map(borderCountry => {
+						let countryName = getCountry(props.data, undefined, borderCountry)[0];
+
 						return(
-							<button className = "borderCountriesLinks">
-								{getCountry(props.data, undefined, borderCountry)}
-							</button>
+							<Link  key = {countryName} to = {`/${countryName}`} style = {{textDecoration: "none"}}>
+								<button className = "borderCountriesLinks">
+									{countryName}
+								</button>
+							</Link>
 						);
 					})}
 				</div>

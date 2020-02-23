@@ -26,13 +26,27 @@ class WorldCountriesPage extends React.Component {
         fetch("https://restcountries.eu/rest/v2/all")
         .then(response => response.json())
         .then(data => {
+            let cleanData = this.cleanData(data);
+
             this.setState({
-                countriesData: data,
-                displayedCountries: data,
-                savedCountriesData: data
+                countriesData: cleanData,
+                displayedCountries: cleanData,
+                savedCountriesData: cleanData
             });
         })
         .catch(error => console.log("ERROR: Data retrieving failed!"))
+    }
+
+    cleanData(countries) {
+        return countries.map(country => {
+            if(country.name.includes("(")){
+                let modifiedCountry = country;
+                modifiedCountry.name = country.name.replace(/ of( the|)/g, "");
+				return modifiedCountry;
+            }
+			else
+				return country;
+        });
     }
     
     findCountry(text) {

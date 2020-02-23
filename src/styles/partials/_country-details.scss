@@ -38,22 +38,28 @@ a {
 .country-details-text {
     @include flex(column, nowrap, space-between);
     align-items: flex-start;
-    
+    margin: 100px 0px 0px 50px;
+}
+
+.country-details-text-title {
+    font-size: 21px;
 }
 
 .country-details-text-column {
     @include flex(row, wrap, space-between);
-    margin: 100px 0 0 50px;
 
     .country-details-text-column-left{
         margin-right: 50px;
     }
+
+    .country-details-text-column-right{
+        align-self: flex-start;
+    }
 }
 
 .country-details-text-borders-row {
-    width: 430px;
     @include flex(row, wrap, flex-start);
-    margin-left: 50px;
+    width: 430px;
 
     .borderCountriesLinks {
         @include linkButton(white);
@@ -69,8 +75,10 @@ a {
     .country-details-layout {
         height: 90%;
     }
-    .country-details-image-row {
+    
+    .country-details-image {
         margin-right: 0;
+        width: 300px;
         
         img {
             width: 300px;
@@ -78,7 +86,11 @@ a {
         }
     }
     
-    .country-details-text-row {
-        margin-top: 0;
+    .country-details-text {
+        margin-top: 50px;
+    }
+
+    .country-details-text-borders-row {
+        width: 100%;
     }
 }
