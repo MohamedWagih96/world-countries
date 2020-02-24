@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Form(props) {
+    let inputStyle = {backgroundColor: props.theme.elementsColor, color: props.theme.textColor};
     
     return(
         <form className = "body-header" onSubmit = {props.handleSubmit}> 
@@ -11,7 +12,7 @@ function Form(props) {
                 name = "searchBox" 
                 placeholder = "Search for a country..."
                 onChange = {props.handleChange}
-                
+                style = {inputStyle}
             />
 
             <select 
@@ -19,6 +20,7 @@ function Form(props) {
                 className = "dropdown-box" 
                 name = "dropdownBox"
                 onChange = {props.handleChange}
+                style = {inputStyle}
             >
                 <option value = "Africa">Africa</option>
                 <option value = "Americas">Americas</option>

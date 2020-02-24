@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function getCountry(countries, name = "", code = "") {
 	let data;
@@ -18,17 +18,36 @@ function getCountry(countries, name = "", code = "") {
 	return data;
 }
 
+function handleClick(props) {
+	props.history.listen(props.clearDisplayedSearchResult);
+	props.history.goBack();
+}
+
+function updateTheme(theme) {
+	document.getElementById("wc-country-details-body").style.background = theme.backgroundColor;
+}
+
 function CountryDetails(props) {
 	let country = getCountry(props.data, props.match.params.countryName, undefined);
+	let history = props.history;
+	let backgroundColor = props.theme.elementsColor;
+	let textColor = props.theme.textColor;
+	let elementsColor = props.theme.elementsColor;
+	let buttonStyle = {backgroundColor: elementsColor, color: textColor};
 
 	return(
-		<div className = "country-details-layout">
-			<div className = "country-details-image">
-				<button>Back</button>
-				<img src = {country.flag} alt = "Country's Flag"/>
+		<div className = "country-details-layout" style = {{backgroundColor: backgroundColor}}>
+			<div className = "country-details-left-column">
+				<button className = "country-details-left-column-back-button" onClick = {() => handleClick(props)} style = {buttonStyle}>
+						<i className = "fas fa-arrow-left"></i>&nbsp;&nbsp;Back
+				</button>
+
+				<div className = "country-details-left-column-image">
+					<img src = {country.flag} alt = "Country's Flag"/>
+				</div>
 			</div>
 			
-			<div className = "country-details-text">
+			<div className = "country-details-text" style = {{color: textColor}}>
 				<div className = "country-details-text-title"><p><b>{country.name}</b></p></div>
 				<div className = "country-details-text-column">
 					<div className = "country-details-text-column-left">
@@ -59,8 +78,11 @@ function CountryDetails(props) {
 				</div>
 
 				<div className = "country-details-text-borders-row">
-					<label style = {country.borders.length === 0 ? {visibility: "hidden"} : {visibility: "visible"}}>
-						<b>Border Countries: </b>
+					<label style = {country.borders.length === 0 ? 
+									{visibility: "hidden"} : 
+									{visibility: "visible", marginRight: "10px"}}
+					>
+						<b>Border Countries:</b>
 					</label>
 
 					{country.borders.map(borderCountry => {
@@ -68,7 +90,7 @@ function CountryDetails(props) {
 
 						return(
 							<Link  key = {countryName} to = {`/${countryName}`} style = {{textDecoration: "none"}}>
-								<button className = "borderCountriesLinks">
+								<button className = "borderCountriesLinks" style = {buttonStyle}>
 									{countryName}
 								</button>
 							</Link>
@@ -77,6 +99,7 @@ function CountryDetails(props) {
 				</div>
 			</div>
 		</div>
+		
 		);
 }
 

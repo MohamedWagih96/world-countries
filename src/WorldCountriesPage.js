@@ -13,13 +13,17 @@ class WorldCountriesPage extends React.Component {
             displayedCountries: [],
             savedCountriesData: [],
             theme: {
+                mode: "Dark Mode",
+                backgroundColor: colors.lightModeBackground,
             	textColor: colors.lightModeText,
-            	elementsColor: colors.lightModeElements
+                elementsColor: colors.lightModeElements,
             }
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.clearDisplayedSearchResult = this.clearDisplayedSearchResult.bind(this);
+        this.toggleThemeMode = this.toggleThemeMode.bind(this);
     }
 
     componentDidMount() {
@@ -37,6 +41,12 @@ class WorldCountriesPage extends React.Component {
         .catch(error => console.log("ERROR: Data retrieving failed!"))
     }
 
+    clearDisplayedSearchResult() {
+        this.setState({
+            displayedCountries: this.state.savedCountriesData
+        })
+    }
+
     cleanData(countries) {
         return countries.map(country => {
             if(country.name.includes("(")){
@@ -50,7 +60,6 @@ class WorldCountriesPage extends React.Component {
     }
     
     findCountry(text) {
-        //let displayedCountries = this.state.displayedCountries;
         let savedCountriesData = this.state.savedCountriesData;
 
         if(text === "") {
@@ -99,52 +108,19 @@ class WorldCountriesPage extends React.Component {
 	toggleThemeMode(mode, backgroundColor, textColor, elementsColor, moonIconVisibility, sunIconVisibility) {
 		this.setState({
 			theme: {
+                mode: mode,
+                backgroundColor: backgroundColor,
             	textColor: textColor,
             	elementsColor: elementsColor
             }
-		});
-
-	    document.getElementById("wc-body").style.background = backgroundColor;
-
-	    let header = document.getElementById("wc-header");
-	    header.style.background = elementsColor;
-	    header.style.color = textColor;
-
-	    let themeButton = document.getElementById("wc-theme-button");
-	    themeButton.style.background = elementsColor;
-	    themeButton.style.color = textColor;
-
-	    document.getElementById("wc-theme-button-text").innerHTML = mode;
-
-	    document.getElementById("regular-moon").style.display = moonIconVisibility;
+        });
+        
+        document.getElementById("regular-moon").style.display = moonIconVisibility;
 	    document.getElementById("solid-sun").style.display = sunIconVisibility;
-
-	    let searchBox = document.getElementById("wc-search-box");
-	    searchBox.style.backgroundColor = elementsColor;
-	    searchBox.style.borderColor = elementsColor;
-	    searchBox.style.color = textColor;
-	    
-	    let dropdownBox = document.getElementById("wc-dropdown-box");
-	    dropdownBox.style.backgroundColor = elementsColor;
-
-	    let dropdownBoxOptions = dropdownBox.options;
-	    for(let i = 0; i < dropdownBoxOptions.length; i++) {
-	        dropdownBoxOptions[i].style.backgroundColor = elementsColor
-	    }
-
-	    dropdownBox.style.borderColor = elementsColor;
-	    dropdownBox.style.color = textColor;
-
-	    
-	    let cards = document.getElementsByClassName("card");
-	    for(let i = 0; i < cards.length; i++) {
-	        cards[i].style.background = elementsColor;
-	        cards[i].style.color = textColor;
-	    }
 	}
 
 	handleClick() {
-	    const mode = document.getElementById("wc-theme-button-text").innerHTML;
+	    const mode = this.state.theme.mode;
 
 	    if(mode === "Dark Mode")
 	        this.toggleThemeMode("Light Mode", colors.darkModeBackground, 
@@ -162,6 +138,7 @@ class WorldCountriesPage extends React.Component {
                     <Fragment>
                         <Header
                             handleClick = {this.handleClick}
+                            theme = {this.state.theme}
                         />
                         <Route 
                             exact path = "/" 
@@ -180,6 +157,8 @@ class WorldCountriesPage extends React.Component {
                                 (props) => <CountryDetails 
                                                 {...props}
                                                 data = {this.state.countriesData}
+                                                theme = {this.state.theme}
+                                                clearDisplayedSearchResult = {this.clearDisplayedSearchResult}
                                             />
                                     }
                         />

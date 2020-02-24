@@ -14,19 +14,23 @@ a {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.country-details-image {
+.country-details-left-column {
+    @include flex(column, nowrap, space-between);
+}
+
+.country-details-left-column-back-button {
+    @include linkButton(white);
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2);
+    align-self: flex-start;
+    //trbl
+    margin: 50px 0 50px 0;
+}
+
+.country-details-left-column-image {
     @include flex(column, wrap, center);
     margin-right: 50px;
-
-    button {
-        @include linkButton(white);
-        width: 100px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2);
-        align-self: flex-start;
-        //trbl
-        margin: 50px 0 50px 0;
-    }
 
     img {
         width: 400px;
