@@ -18,15 +18,6 @@ function getCountry(countries, name = "", code = "") {
 	return data;
 }
 
-function handleClick(props) {
-	props.history.listen(props.clearDisplayedSearchResult);
-	props.history.goBack();
-}
-
-function updateTheme(theme) {
-	document.getElementById("wc-country-details-body").style.background = theme.backgroundColor;
-}
-
 function CountryDetails(props) {
 	let country = getCountry(props.data, props.match.params.countryName, undefined);
 	let history = props.history;
@@ -38,7 +29,7 @@ function CountryDetails(props) {
 	return(
 		<div className = "country-details-layout" style = {{backgroundColor: backgroundColor}}>
 			<div className = "country-details-left-column">
-				<button className = "country-details-left-column-back-button" onClick = {() => handleClick(props)} style = {buttonStyle}>
+				<button className = "country-details-left-column-back-button" onClick = {props.history.goBack} style = {buttonStyle}>
 						<i className = "fas fa-arrow-left"></i>&nbsp;&nbsp;Back
 				</button>
 

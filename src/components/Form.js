@@ -11,6 +11,7 @@ function Form(props) {
                 type = "text" 
                 name = "searchBox" 
                 placeholder = "Search for a country..."
+                value = {props.searchText}
                 onChange = {props.handleChange}
                 style = {inputStyle}
             />
@@ -19,9 +20,11 @@ function Form(props) {
                 id = "wc-dropdown-box" 
                 className = "dropdown-box" 
                 name = "dropdownBox"
+                value = {props.selectedRegion}
                 onChange = {props.handleChange}
                 style = {inputStyle}
             >
+                <option value = "All">All</option>
                 <option value = "Africa">Africa</option>
                 <option value = "Americas">Americas</option>
                 <option value = "Asia">Asia</option>

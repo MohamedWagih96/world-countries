@@ -9,6 +9,8 @@ function Body(props) {
                 handleSubmit = {props.handleSubmit}
                 handleChange = {props.handleChange}
                 theme = {props.data.theme}
+                searchText = {props.searchText}
+                selectedRegion = {props.selectedRegion}
             />
 
             <Countries 

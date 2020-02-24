@@ -12,6 +12,8 @@ class WorldCountriesPage extends React.Component {
             countriesData: [],
             displayedCountries: [],
             savedCountriesData: [],
+            searchText: "",
+            selectedRegion: "All",
             theme: {
                 mode: "Dark Mode",
                 backgroundColor: colors.lightModeBackground,
@@ -22,7 +24,6 @@ class WorldCountriesPage extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.clearDisplayedSearchResult = this.clearDisplayedSearchResult.bind(this);
         this.toggleThemeMode = this.toggleThemeMode.bind(this);
     }
 
@@ -39,12 +40,6 @@ class WorldCountriesPage extends React.Component {
             });
         })
         .catch(error => console.log("ERROR: Data retrieving failed!"))
-    }
-
-    clearDisplayedSearchResult() {
-        this.setState({
-            displayedCountries: this.state.savedCountriesData
-        })
     }
 
     cleanData(countries) {
@@ -74,9 +69,12 @@ class WorldCountriesPage extends React.Component {
 
     filterByRegion(region) {
         let allCountries = this.state.countriesData;
-        return allCountries.filter(country => {
-            return country.region === region;
-        });
+        if(region === "All") return allCountries;
+        else {
+            return allCountries.filter(country => {
+                return country.region === region;
+            });
+        }
     }
 
     handleSubmit(event) {
@@ -92,7 +90,8 @@ class WorldCountriesPage extends React.Component {
 
             let data = this.findCountry(countryName);
             this.setState({
-                displayedCountries: data
+                displayedCountries: data,
+                searchText: value
             });
         }
 
@@ -100,7 +99,8 @@ class WorldCountriesPage extends React.Component {
             let data = this.filterByRegion(value);
             this.setState({
                 displayedCountries: data,
-                savedCountriesData: data
+                savedCountriesData: data,
+                selectedRegion: value
             });
         }
     }
@@ -148,6 +148,8 @@ class WorldCountriesPage extends React.Component {
                                                 data = {this.state}
                                                 handleSubmit = {this.handleSubmit} 
                                                 handleChange = {this.handleChange}
+                                                searchText = {this.state.searchText}
+                                                selectedRegion = {this.state.selectedRegion}
                                             />
                                     } 
                         />
@@ -158,7 +160,6 @@ class WorldCountriesPage extends React.Component {
                                                 {...props}
                                                 data = {this.state.countriesData}
                                                 theme = {this.state.theme}
-                                                clearDisplayedSearchResult = {this.clearDisplayedSearchResult}
                                             />
                                     }
                         />
